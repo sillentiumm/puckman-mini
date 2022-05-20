@@ -6,7 +6,7 @@ let bottom = document.getElementById('bottom')
 let main = document.getElementById('main')
 let score = document.getElementById('score')
 let timer = document.getElementById('timer')
-alert('пробел - старт, управление стрелочками.')
+alert('пробел - старт, управление стрелочками')
 
 let n = 30
 timer.innerHTML = n
