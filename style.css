@@ -4,35 +4,53 @@
 	padding: 0;
 }
 .main {
-	background: linear-gradient(90deg, #b9deed, #efefef);
-	width: 100vw;
-	height: 100vh;
+	width: 900px;
+	height: 900px;
+	border:  2px solid black;
+	margin: 10px auto;
 	display: grid;
-	grid-template-columns: repeat(20, 1fr);
-	grid-template-rows: repeat(20, 1fr);
+	grid-template-columns: repeat(20, 45px);
+	grid-template-rows: repeat(20, 45px);
 	overflow: hidden;
+	position: relative;
+}
+.main-bg {
+	background: linear-gradient(90deg, #b9deed, #efefef);
+	height: 100vh;
 }
 .snake {
 	position: relative;
 	background-color: transparent;
 	grid-row-end: 2;
 	grid-column-end: 2;
-	width: 60%;
+	width: 100%;
 	height: 100%;
 	border-radius:  50%;
-	margin: 0 auto;
 	transition: all ease .25s ;
-	border-left:  35px solid green;
-	border-top:  35px solid green;
+	border-left:  28px solid green;
+	border-top:  28px solid green;
 	transform: rotate(315deg);
+}
+.enemy {
+	position: relative;
+	background-color: black;
+	grid-row-start: 10;
+	grid-row-end: 12;
+	grid-column-start: 10;
+	grid-column-end: 12;
+	width: 100%;
+	height: 100%;
+	border-radius:  50%;
+	transition: all ease .25s ;
+	z-index: 5;
 }
 .snake:after{
 	position: absolute;
 	content: '';
-	width: 10px;
-	height: 10px;
+	width: 8px;
+	height: 8px;
 	background-color: black;
-	top:  -17px;
+	top:  -15px;
 	left:  5px;
 	border-radius: 50%;
 }
@@ -44,36 +62,20 @@
 	height: 35px;	
 	opacity: .5;
 }
-.button-top {
-	left: 250px;
-	bottom: 135px;
-}
-.button-right {
-	left: 450px;
-}
-.button-bottom {
-	left: 250px;
-}
-.button-start {
-	left:  225px;
-	bottom:  25px;
-	width: 250px;
-	height: 50px;
-}
 .score {
 	position: absolute;
 	top:  100px;
-	right:  100px;
+	left:  50px;
 	width: 250px;
 	height: 25px;
-	background-color: #fff;
+	font-size: 22px;
 	text-align: center;
-	font-size:  22px;
+	background-color: #fff;
 }
 .timer {
 	position: absolute;
 	top:  50px;
-	right:  100px;
+	left:  50px;
 	width: 250px;
 	height: 25px;
 	font-size: 22px;
@@ -81,11 +83,23 @@
 	background-color: #fff;
 }
 .point {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	background-color: gold;
 	border-radius:  50%;
 	margin: 5px auto;
-	width: 30%;
-	height: 50%
+	width: 22.5px;
+	height: 22.5px;
+	border:  2px solid orange;
+	z-index: 3;
+}
+.point:after {
+	position: absolute;
+	content: '';
+	width: 4px;
+	height: 14px;
+	top:  2.25px;
+	left:  7.25px;
+	background-color: orange;
 }
