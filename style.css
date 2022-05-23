@@ -7,15 +7,17 @@
 	width: 900px;
 	height: 900px;
 	border:  2px solid black;
-	margin: 10px auto;
+	margin: auto;
 	display: grid;
 	grid-template-columns: repeat(20, 45px);
 	grid-template-rows: repeat(20, 45px);
 	overflow: hidden;
 	position: relative;
+	background-color: #fff;
+	box-shadow: inset 3px 3px grey;
 }
 .main-bg {
-	background: linear-gradient(90deg, #b9deed, #efefef);
+	background: url('111.jpg') center no-repeat;
 	height: 100vh;
 }
 .snake {
@@ -27,13 +29,23 @@
 	height: 100%;
 	border-radius:  50%;
 	transition: all ease .25s ;
-	border-left:  28px solid green;
-	border-top:  28px solid green;
+	border-left:  28px solid #248f24;
+	border-top:  28px solid #248f24;
 	transform: rotate(315deg);
+}
+.snake:after{
+	position: absolute;
+	content: '';
+	width: 8px;
+	height: 8px;
+	background-color: black;
+	top:  -15px;
+	left:  3px;
+	border-radius: 50%;
 }
 .enemy {
 	position: relative;
-	background-color: black;
+	background-color: #808080;
 	grid-row-start: 10;
 	grid-row-end: 12;
 	grid-column-start: 10;
@@ -44,43 +56,250 @@
 	transition: all ease .25s ;
 	z-index: 5;
 }
-.snake:after{
+.enemy-glass {
+	position: absolute;
+	background-color: #fff;
+	top: 15px;
+	left:  calc(50% - 15px);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	z-index: 6;
+}
+.enemy-glass:before {
 	position: absolute;
 	content: '';
-	width: 8px;
-	height: 8px;
-	background-color: black;
-	top:  -15px;
-	left:  5px;
+	top:  6px;
+	left:  8px;
+	width: 14px;
+	height: 18px;
+	background-color: red;
 	border-radius: 50%;
 }
-.button {
+.enemy-glass:after {
 	position: absolute;
-	bottom: 100px;
-	left: 50px;
-	width: 200px;
-	height: 35px;	
-	opacity: .5;
+	content: '';
+	width: 5px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: black;
+	top: 11px;
+	left: 12.5px;
+}
+.enemy-mouse {
+	position: absolute;
+	bottom:  16px;
+	left: 25px;
+	width: 40px;
+	height: 16px;
+	border-radius: 10px;
+	background-color: black;
+	z-index: 7;
+}
+.enemy-mouse:before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 3px;
+    background-color: red;
+    top:  9px;
+    left: 12px;
+    border: 2px solid red;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0
+}
+.button {
+	display: inline-block;
+	background-color: #fff;
+	width: 30%;
+	height: 32px;	
+	margin: 10px 3px;
+	border-radius: 5px;
+	border: 2px solid black;
+	font-weight: 500;
+	font-size: 22px;
+	color:  black;
+	text-shadow: none;
+}
+.button-start {
+	background-color: #fff;
+	position: absolute;
+	top: 750px;
+	left: 100px;
+	width: 300px;
+	height: 50px;
+	font-size: 20px;
+	text-align: center;
+}
+.button-start:hover {
+	box-shadow: 7px 3px 3px #d9ffb3;
+	cursor: pointer;
 }
 .score {
 	position: absolute;
-	top:  100px;
-	left:  50px;
-	width: 250px;
-	height: 25px;
-	font-size: 22px;
+	top:  645px;
+	right:  130px;
+	width: 150px;
+	height: 38px;
+	font-size: 52px;
 	text-align: center;
+	background-color: transparent;
+	color: #fff;
+	text-shadow: 6px 3px 3px black;
+}
+.score-point {
+	position: absolute;
+	background-color: gold;
+	border-radius:  50%;
+	width: 100px;
+	height: 100px;
+	border:  4px solid orange;
+	z-index: 3;
+	top: 625px;
+	right: 250px;
+}
+.score-point_one {
+	position: absolute;
+	content: '';
+	width: 14px;
+	height: 56px;
+	top:  calc(50% - 27px);
+	left:  calc(50% - 7px);
+	background-color: orange;
+}
+.score-point_one:before {
+	content: '';
+	position: absolute;
+	width: 34px;
+	height: 5px;
+	top: -5px;
+	left: -10px;
+	background-color: orange;
+}
+.score-point_one:after {
+	content: '';
+	position: absolute;
+	width: 34px;
+	height: 5px;
+	bottom: -5px;
+	left: -10px;
+	background-color: orange;
+}
+.clock {
+	position: absolute;
+	top:  150px;
+	right:  100px;
+	width: 300px;
+	height: 300px;
+	font-size: 18px;
 	background-color: #fff;
+	border-radius: 50%;
+	border:  8px solid black;
+}
+.clock-center {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	top: calc(50% - 6px);
+	left: calc(50% - 6px);
+	background-color: red;
+	border-radius: 50%;
+	z-index: 15;
+}
+.clock-minute {
+	position: absolute;
+	width: 274px;
+	height: 274px;
+	top:  5px;
+	left:  5px;
+}
+.clock-minute1{
+	width: 4px;
+	height: 10px;
+	position: absolute;
+	top: 0;
+	left: calc(50% - 2px);
+	background-color: black;
+}
+.clock-minute2{
+	width: 10px;
+	height: 4px;
+	position: absolute;
+	top: calc(50% - 2px);
+	right:  0;
+	background-color: black;
+}
+.clock-minute3{
+	width: 4px;
+	height: 10px;
+	position: absolute;
+	bottom: 0;
+	left: calc(50% - 2px);
+	background-color: black;
+}
+.clock-minute4{
+	width: 10px;
+	height: 4px;
+	position: absolute;
+	top: calc(50% - 2px);
+	left: 0;
+	background-color: black;
+}
+.clock-minute_30 {
+	transform: rotate(30deg);
+}
+.clock-minute_60 {
+	transform: rotate(60deg);
+}
+.clock-arrow {
+	width: 6px;
+	height: 138px;
+	position: absolute;
+	left:  calc(50% - 3px);
+	top: 24px;
+	background-color: black;
+	z-index: 12;
+}
+.clock-move {
+	width: 100%;
+	height: 100%;
+	transform: rotate(180deg);
+	z-index: 20;
 }
 .timer {
 	position: absolute;
-	top:  50px;
-	left:  50px;
-	width: 250px;
-	height: 25px;
+	top:  370px;
+	right:  175px;
+	width: 150px;
+	height: 38px;
+	font-size: 42px;
+	text-align: center;
+	background-color: transparent;
+	border-radius: 5px;
+	padding: 4px;
+	z-index: 1;
+}
+.time {
+	position: absolute;
+	top:  125px;
+	left:  75px;
+	width: 350px;
+	height: 75px;
+	text-align: center;
+	font-size: 32px;
+	color:  #fff;
+	text-shadow: 6px 3px 3px black;
+}
+.difficult {
+	position: absolute;
+	top:  425px;
+	left:  75px;
+	width: 350px;
+	height: 75px;
 	font-size: 22px;
 	text-align: center;
-	background-color: #fff;
+	font-size: 32px;
+	color:  #fff;
+	text-shadow: 6px 3px 3px black;
 }
 .point {
 	position: relative;
@@ -102,4 +321,36 @@
 	top:  2.25px;
 	left:  7.25px;
 	background-color: orange;
+}
+
+#time1 {
+	background-color: #d9ffb3;
+}
+#time1:hover {
+	box-shadow: 5px 2px 2px #d9ffb3;
+	cursor: pointer;
+}
+#time2:hover {
+	box-shadow: 5px 2px 2px #d9ffb3;
+	cursor: pointer;
+}
+#time3:hover {
+	box-shadow: 5px 2px 2px #d9ffb3;
+	cursor: pointer;
+}
+
+#difficult2 {
+	background-color: #d9ffb3;
+}
+#difficult1:hover {
+	box-shadow: 5px 2px 2px #d9ffb3;
+	cursor: pointer;
+}
+#difficult2:hover {
+	box-shadow: 5px 2px 2px #d9ffb3;
+	cursor: pointer;
+}
+#difficult3:hover {
+	box-shadow: 5px 2px 2px #d9ffb3;
+	cursor: pointer;
 }
