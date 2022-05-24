@@ -4,13 +4,6 @@ let main = document.getElementById('main')
 let score = document.getElementById('score')
 let timer = document.getElementById('timer')
 
-let difficult1 = document.getElementById('difficult1')
-let difficult2 = document.getElementById('difficult2')
-let difficult3 = document.getElementById('difficult3')
-
-let time1 = document.getElementById('time1')
-let time2 = document.getElementById('time2')
-let time3 = document.getElementById('time3')
 
 let buttonStart = document.getElementById('button-start')
 let clockMove = document.getElementById('clock-move')
@@ -52,53 +45,44 @@ buttonStart.addEventListener('click', el => {
     startGame()
 })
 
-time1.addEventListener('click' , el => {
-    n = 30
-    reset()
-    timer.innerHTML = n
-    time1.style.backgroundColor = "#d9ffb3"
-    time2.style.backgroundColor = "#fff"
-    time3.style.backgroundColor = "#fff"
-})
-time2.addEventListener('click' , el => {
-    n = 60
-    reset()
-    timer.innerHTML = n
-    time1.style.backgroundColor = "#fff"
-    time2.style.backgroundColor = "#d9ffb3"
-    time3.style.backgroundColor = "#fff"
-})
-time3.addEventListener('click' , el => {
-    n = 90
-    reset()
-    timer.innerHTML = n
-    time1.style.backgroundColor = "#fff"
-    time2.style.backgroundColor = "#fff"
-    time3.style.backgroundColor = "#d9ffb3"
+document.querySelectorAll(".difficult-el").forEach(el => {
+    el.addEventListener('click' , function() {
+        document.querySelectorAll(".difficult-el").forEach(ele => {
+                ele.style.backgroundColor = "#fff"
+            })
+        if (el.id == "difficult1") {
+            m = 2
+        }
+        else if (el.id == "difficult2") {
+            m = 1
+        }
+        else if (el.id == "difficult3") {
+            m = .75
+        }
+        this.style.backgroundColor = "#d9ffb3"
+        reset()
+    })
 })
 
+document.querySelectorAll(".time-el").forEach(el => {
+    el.addEventListener('click' , function() {
+        document.querySelectorAll(".time-el").forEach(ele => {
+                ele.style.backgroundColor = "#fff"
+            })
+        if (el.id == "time1") {
+            n = 30
+        }
+        else if (el.id == "time2") {
+            n = 60
+        }
+        else if (el.id == "time3") {
+            n = 90
+        }
+        this.style.backgroundColor = "#d9ffb3"
+        reset()
+    })
+})
 
-difficult1.addEventListener('click', el => {
-    reset()
-    m = 2
-    difficult1.style.backgroundColor = "#d9ffb3"
-    difficult2.style.backgroundColor = "#fff"
-    difficult3.style.backgroundColor = "#fff"
-})
-difficult2.addEventListener('click', el => {
-    reset()
-    m = 1
-    difficult1.style.backgroundColor = "#fff"
-    difficult2.style.backgroundColor = "#d9ffb3"
-    difficult3.style.backgroundColor = "#fff"
-})
-difficult3.addEventListener('click', el => {
-    reset()
-    m = .75
-    difficult1.style.backgroundColor = "#fff"
-    difficult2.style.backgroundColor = "#fff"
-    difficult3.style.backgroundColor = "#d9ffb3"
-})
 
 
 document.addEventListener('keydown', e => {
